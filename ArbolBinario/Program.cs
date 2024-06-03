@@ -7,18 +7,23 @@ namespace ArbolBinario
         static void Main(string[] args)
         {
             ABB abb = new ABB();
+            AVL avl = new AVL();
             bool salir = false;
 
             while (!salir)
             {
                 Console.Clear();
-                Console.WriteLine("1. Insertar Nodo");
-                Console.WriteLine("2. Buscar Nodo");
-                Console.WriteLine("3. Eliminar Nodo");
-                Console.WriteLine("4. Recorrido Preorden");
-                Console.WriteLine("5. Recorrido Inorden");
-                Console.WriteLine("6. Recorrido Postorden");
-                Console.WriteLine("7. Salir");
+                Console.WriteLine("1. Insertar Nodo en ABB");
+                Console.WriteLine("2. Buscar Nodo en ABB");
+                Console.WriteLine("3. Eliminar Nodo en ABB");
+                Console.WriteLine("4. Recorrido Preorden en ABB");
+                Console.WriteLine("5. Recorrido Inorden en ABB");
+                Console.WriteLine("6. Recorrido Postorden en ABB");
+                Console.WriteLine("7. Insertar Nodo en AVL");
+                Console.WriteLine("8. Recorrido Preorden en AVL");
+                Console.WriteLine("9. Recorrido Inorden en AVL");
+                Console.WriteLine("10. Recorrido Postorden en AVL");
+                Console.WriteLine("11. Salir");
                 Console.Write("Seleccione una opción: ");
                 int opcion = int.Parse(Console.ReadLine());
 
@@ -27,8 +32,8 @@ namespace ArbolBinario
                     case 1:
                         Console.Clear();
                         Console.Write("Ingrese el valor del nodo: ");
-                        int valor = int.Parse(Console.ReadLine());
-                        abb.PoblarABB(abb.NodoRaiz, new NodoABB(valor));
+                        int valorABB = int.Parse(Console.ReadLine());
+                        abb.PoblarABB(abb.NodoRaiz, new NodoABB(valorABB));
                         break;
                     case 2:
                         Console.Clear();
@@ -46,13 +51,6 @@ namespace ArbolBinario
                         }
                         Console.ReadKey();
                         break;
-                    //Console.Clear();
-                    //Console.Write("Ingrese el valor a buscar: ");
-                    //int valorBuscar = int.Parse(Console.ReadLine());
-                    //NodoABB nodoBuscado = abb.BuscarNodo(abb.NodoRaiz, valorBuscar);
-                    //Console.WriteLine($"Nodo buscado: {(nodoBuscado != null ? nodoBuscado.Informacion.ToString() : "No existe")}");
-                    //Console.ReadKey();
-                    //break;
                     case 3:
                         Console.Clear();
                         Console.Write("Ingrese el valor a eliminar: ");
@@ -82,6 +80,33 @@ namespace ArbolBinario
                         break;
                     case 7:
                         Console.Clear();
+                        Console.Write("Ingrese el valor del nodo para AVL: ");
+                        int valorAVL = int.Parse(Console.ReadLine());
+                        avl.NodoRaiz = avl.Insertar(avl.NodoRaiz, valorAVL);
+                        break;
+                    case 8:
+                        Console.Clear();
+                        Console.WriteLine("Recorrido Preorden en AVL:");
+                        avl.RecorridoPreorden(avl.NodoRaiz);
+                        Console.WriteLine();
+                        Console.ReadKey();
+                        break;
+                    case 9:
+                        Console.Clear();
+                        Console.WriteLine("Recorrido Inorden en AVL:");
+                        avl.RecorridoInorden(avl.NodoRaiz);
+                        Console.WriteLine();
+                        Console.ReadKey();
+                        break;
+                    case 10:
+                        Console.Clear();
+                        Console.WriteLine("Recorrido Postorden en AVL:");
+                        avl.RecorridoPostorden(avl.NodoRaiz);
+                        Console.WriteLine();
+                        Console.ReadKey();
+                        break;
+                    case 11:
+                        Console.Clear();
                         salir = true;
                         break;
                     default:
@@ -94,6 +119,8 @@ namespace ArbolBinario
         }
     }
 }
+
+
 
 //using ArbolBinario;
 
